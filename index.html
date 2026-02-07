@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧠 記憶力ゲーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="confetti"></canvas>
+    
+    <div class="container">
+        <!-- スタート画面 -->
+        <div id="startScreen" class="screen active">
+            <h1 class="title">🧠 Memory Game</h1>
+            <p class="subtitle">カードをめくって同じ絵柄を見つけよう！</p>
+            
+            <div class="level-selection">
+                <button class="level-btn easy" onclick="startGame(8)">🙂 簡単 (8枚)</button>
+                <button class="level-btn normal" onclick="startGame(12)">😎 普通 (12枚)</button>
+                <button class="level-btn hard" onclick="startGame(16)">😤 難しい (16枚)</button>
+            </div>
+            
+            <div class="best-scores">
+                <h3>🏆 ベストタイム</h3>
+                <p>簡単: <span id="bestEasy">--:--</span></p>
+                <p>普通: <span id="bestNormal">--:--</span></p>
+                <p>難しい: <span id="bestHard">--:--</span></p>
+            </div>
+        </div>
+
+        <!-- ゲーム画面 -->
+        <div id="gameScreen" class="screen">
+            <div class="game-header">
+                <button class="back-btn" onclick="backToStart()">← 戻る</button>
+                <div class="game-info">
+                    <span>⏱️ <span id="timer">00:00</span></span>
+                    <span>🎯 <span id="moves">0</span> 手</span>
+                    <span>⭐ <span id="pairs">0</span>/<span id="totalPairs">0</span></span>
+                </div>
+            </div>
+            <div class="game-board" id="gameBoard"></div>
+        </div>
+
+        <!-- クリア画面 -->
+        <div id="clearScreen" class="screen">
+            <h2 class="clear-title">🎉 クリア！</h2>
+            <div class="clear-stats">
+                <p>⏱️ タイム: <span id="finalTime">00:00</span></p>
+                <p>🎯 手数: <span id="finalMoves">0</span></p>
+                <p>📊 精度: <span id="accuracy">0%</span></p>
+                <p id="recordMessage"></p>
+            </div>
+            <div class="clear-actions">
+                <button class="btn btn-secondary" onclick="backToStart()">🏠 メニュー</button>
+                <button class="btn btn-primary" onclick="replay()">🔄 リプレイ</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
